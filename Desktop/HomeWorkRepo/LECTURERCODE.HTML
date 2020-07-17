@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+body{
+background: #B0B0B0;
+margin-top: 15px;
+}
+
+.container{
+background: #fff;
+}
+</style>
+
+
+<script>
+function changeLabel()
+{
+selected = document.forms['frmlec']['cmbcat'].selectedIndex;
+if (selected == 3)
+  {
+ document.getElementById('anz').innerHTML = "NIC no";
+ document.forms['frmlec']['txtNo'].title="The NIC Number should have 12 digits";
+ document.forms['frmlec']['txtNo'].pattern="[0-9][12]";
+  }
+
+else
+{
+document.getElementById('anz').innerHTML = "Emp No";
+   document.forms['frmlec']['txtNo'].title="The Employee Number should have 5 digits";
+   document.forms['frmlec']['txtNo'].pattern="[0-9][5]";
+}
+}
+
+
+
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+    <h1>lecture details</h1>
+            </div>
+            <div class="panel-body">
+                <form role="form" name="frmlec" action="" method="">
+                   
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label>Lecturer Name</label>
+                                <input type="text" class="form-control" name="txtlastname" required  placeholder="Enter the last name" />
+<!--                                readonly-->
+                            </div>
+                        </div>
+</div>
+                       
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label>Catogary</label>
+                                <select class="form-control" name="cmbcat" onChange="changeLabel()">
+                                    <option value=""> -- Select One -- </option>
+                                    <option id="val1" value="Permenent">Permenent</option>
+                                    <option id="val2" value="Contract">Contract</option>
+                                    <option id="val3" value="Visiting">Visiting</option>                                  
+                                </select>
+                               
+                               
+                            </div>
+                        </div>
+                    </div>
+                   
+                   
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                             
+                                <label id="anz"> Emplooyee No</label>
+                                <input type="number" min="0" class="form-control" name="txtNo" required
+pattern="(0-9)(5)" title="the employee no should have five digits" placeholder="Enter the number" />
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" name="btnsave" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save </button>
+                </form>
+</div>
+</div>
+    </div>
+</body>
+</html>
